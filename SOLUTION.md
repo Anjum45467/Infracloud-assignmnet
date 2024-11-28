@@ -34,8 +34,9 @@ spec:
  
 3)The error message
   Events:
-  Type     Reason        Age                    From                   Message
-  ----     ------        ----                   ----                   -------
+  
+  **Type     Reason        Age                    From                   Message
+  ----     ------        ----                   ----                   -------**
   Warning  FailedCreate  6m33s (x25 over 128m)  replicaset-controller  Error creating: pods "recommendationservice-86846965dd-" is forbidden: error looking up service account 
   default/boutique: serviceaccount "boutique" not found
   you were seeing indicated that Kubernetes was unable to find the boutique service account, or it existed but didn't have the correct permissions to access the resources it needed.
