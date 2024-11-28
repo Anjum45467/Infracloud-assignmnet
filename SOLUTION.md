@@ -27,9 +27,11 @@ spec:
 
  **Root Cause:**
 1)Kubernetes uses Service Accounts to manage access to cluster resources. A service account allows pods to interact with the Kubernetes API and access other resources securely.
+
 2)In your case, the recommendationservice deployment specified the boutique service account, but that service account didn’t have the required permissions to operate correctly.
-The error message 
-3)Events:
+ 
+3)The error message
+  Events:
   Type     Reason        Age                    From                   Message
   ----     ------        ----                   ----                   -------
   Warning  FailedCreate  6m33s (x25 over 128m)  replicaset-controller  Error creating: pods "recommendationservice-86846965dd-" is forbidden: error looking up service account 
@@ -37,10 +39,12 @@ The error message
   you were seeing indicated that Kubernetes was unable to find the boutique service account, or it existed but didn't have the correct permissions to access the resources it needed.
   **Understanding:**
 1.In the case of the recommendationservice deployment, it was failing to create pods because of a permissions issue related to the service account.
+
 2.The service account boutique was specified in the recommendationservice.yaml file under the spec section like this:
 spec
 serviceAccountName: boutique
 This means that Kubernetes was supposed to use the boutique service account for the pods of this deployment.
+
 3.However, the service account boutique was missing the necessary permissions to allow the deployment to run properly. Specifically, it needed view permissions to interact with other resources in the Kubernetes cluster.
 
 ***#######Solutions#########***
