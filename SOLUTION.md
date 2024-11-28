@@ -27,6 +27,7 @@ spec:
 ## Issue 2:"The deploymnet "recommendationservice" , it was failing to create pods because of a permissions issue related to the service account boutique service account didn’t have the correct permissions to interact with the Kubernetes resources." 
 
  **Root Cause:**
+ 
 1)Kubernetes uses Service Accounts to manage access to cluster resources. A service account allows pods to interact with the Kubernetes API and access other resources securely.
 
 2)In your case, the recommendationservice deployment specified the boutique service account, but that service account didn’t have the required permissions to operate correctly.
