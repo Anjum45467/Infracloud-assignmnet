@@ -20,6 +20,7 @@ spec:
           operator: "Exists"
           effect: "NoSchedule"
 **Explanation of changes:**
+
 - Toleration for Master Node: This line allows the pod to tolerate the taint on master nodes (node-role.kubernetes.io/master: NoSchedule). If your master node is used for running workloads, this will let the pod be scheduled on it.
 - Node Selector: If you want the pod to run only on specific nodes, you can leave or update the nodeSelector field to ensure it matches the correct node labels. Alternatively, you can remove the nodeSelector entirely to allow Kubernetes to choose any available node.
   
@@ -37,7 +38,9 @@ spec:
   Warning  FailedCreate  6m33s (x25 over 128m)  replicaset-controller  Error creating: pods "recommendationservice-86846965dd-" is forbidden: error looking up service account 
   default/boutique: serviceaccount "boutique" not found
   you were seeing indicated that Kubernetes was unable to find the boutique service account, or it existed but didn't have the correct permissions to access the resources it needed.
+  
   **Understanding:**
+  
 1.In the case of the recommendationservice deployment, it was failing to create pods because of a permissions issue related to the service account.
 
 2.The service account boutique was specified in the recommendationservice.yaml file under the spec section like this:
