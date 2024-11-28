@@ -4,7 +4,7 @@
  - 0/2 nodes are available: 1 node(s) didn't match Pod's node affinity, 1 node(s) had taint {node-role.kubernetes.io/master: }, that the pod didn't tolerate, indicates that the pod is not able to be scheduled on the available nodes due to two main reasons :
  - Node Affinity: The pod has a nodeSelector which restricts it to only be scheduled on nodes with the label kubernetes.io/hostname: test-worker-2. However, it seems that either the node test-worker-2 is unavailable or does not exist.
 - Taints: The node has a taint (node-role.kubernetes.io/master) that prevents the pod from being scheduled on master nodes unless the pod tolerates the taint.
-#######Solutions#########
+**#######Solutions#########**
 **Check if the Node Exists** : Ensure that a node labeled kubernetes.io/hostname: test-worker-2 exists. If this node doesn't exist, either create the node with this label or update the nodeSelector to match an available node's label.
 **Add Toleration for Master Node**: If your cluster's master node is being used for workloads, you'll need to add a toleration to allow the pod to be scheduled on that node, as the taint node-role.kubernetes.io/master is preventing the pod from being scheduled on master nodes.
 spec:
