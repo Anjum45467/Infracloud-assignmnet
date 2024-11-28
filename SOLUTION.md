@@ -39,7 +39,7 @@ spec:
   default/boutique: serviceaccount "boutique" not found
   you were seeing indicated that Kubernetes was unable to find the boutique service account, or it existed but didn't have the correct permissions to access the resources it needed.
   
-  **Understanding:**
+ **Explanation of changes:**
   
 1.In the case of the recommendationservice deployment, it was failing to create pods because of a permissions issue related to the service account.
 
